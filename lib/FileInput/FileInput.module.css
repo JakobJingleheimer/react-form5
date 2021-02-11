@@ -1,0 +1,13 @@
+.FileInput {
+	display: block;
+}
+
+.FileInputControl {
+	display: none;
+}
+
+.FileInputButton {
+	display: block;
+	pointer-events: none;
+	width: 100%;
+}

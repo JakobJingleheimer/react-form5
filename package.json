@@ -1,0 +1,67 @@
+{
+  "name": "react-html5-form",
+  "version": "1.0.0",
+  "description": "A set of mostly unopinionated react components leveraging native APIs; supports controlled and uncontrolled state.",
+  "main": "./lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "type": "module",
+  "repository": "github:jshado1/react-html5-form",
+  "keywords": [
+    "a11y",
+    "constraints validation api",
+    "forms",
+    "jsx",
+    "react"
+  ],
+  "author": "Jacob Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakobJingleheimer/react-html5-form/issues"
+  },
+  "homepage": "https://github.com/JakobJingleheimer/react-html5-form#readme",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "peerDependencies": {
+    "classnames": "*",
+    "prop-types": "*",
+    "react": "~17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-transform-react-jsx": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "runtime": "automatic",
+          "useSpread": true
+        }
+      ],
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/style.mock.js"
+    },
+    "rootDir": "./lib",
+    "transform": {
+      "\\.jsx?$": "babel-jest"
+    }
+  }
+}

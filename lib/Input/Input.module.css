@@ -1,0 +1,128 @@
+.InputField[arrangement="inline"] {
+	align-items: center;
+	gap: var(--grid-gutter);
+	grid-template-columns: max-content max-content;
+	position: relative;
+}
+.InputField[arrangement="stacked"] {
+	align-items: baseline;
+	justify-content: space-between;
+}
+.InputField[arrangement="inline"],
+.InputField[arrangement="stacked"] {
+	display: grid;
+	gap: calc(var(--grid-gutter) / 2);
+}
+.InputField[arrangement="stand-alone"] {
+	display: inline;
+}
+
+.Input {
+	background-color: unset;
+	border: 1px solid var(--colour-medium);
+	border-radius: var(--default-border-radius);
+	padding: var(--default-padding);
+}
+.Input:focus {
+	outline-color: var(--colour-primary);
+}
+.Input:disabled {
+	cursor: default;
+}
+.Input:disabled,
+.Input:read-only {
+	background-color: var(--colour-medium);
+	color: var(--colour-muted);
+}
+.Input:read-only {
+	cursor: not-allowed;
+}
+
+.Input[type="number"] {
+	text-align: right;
+}
+
+.Input:not([type="checkbox"]):not([type="radio"]) + .Label {
+	order: -1;
+	text-transform: capitalize;
+}
+
+.Input:required + .Label::after {
+	content: '*';
+	margin-left: 0.1em;
+}
+.Input[touched]:invalid:focus {
+	outline-color: var(--colour-danger);
+}
+.Input[touched]:invalid,
+.Error {
+	border-color: var(--colour-danger);
+}
+.Input[touched]:invalid,
+.Input[touched]:invalid + .Label,
+.Error {
+	color: var(--colour-danger);
+}
+
+.Error {
+	background-color: var(--colour-background);
+	border: 1px solid;
+	border-radius: var(--default-border-radius);
+	display: inline-block;
+	right: 0;
+	padding: 0.5em;
+	position: absolute;
+	top: 50%;
+	transform: translate(calc(100% + 1em),-50%);
+}
+.Error::after {
+	background-color: inherit;
+	border: inherit;
+	bottom: 50%;
+	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
+	content: '';
+	display: block;
+	height: 0.5em;
+	left: 0;
+	position: absolute;
+	transform: translate(-50%, 50%) rotate(225deg);
+	width: 0.5em;
+}
+
+input[variant="toggle"] {
+	align-items: center;
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: #eee;
+	border-radius: 1rem;
+	display: inline-flex;
+	flex-direction: row;
+	height: 1rem;
+	justify-content: center;
+	padding: unset;
+	width: 2rem;
+}
+
+input[variant="toggle"]::after {
+	align-self: flex-end;
+	background-color: #aaa;
+	border-radius: 100%;
+	content: '';
+	display: inline-block;
+	height: 100%;
+	transform: translateX(calc(-50% + 1px));
+	width: 50%;
+	transition:
+		background-color var(--default-transition),
+		transform var(--default-transition);
+}
+input[variant="toggle"]:checked::after {
+	background-color: var(--colour-primary);
+	transform: translateX(50%);
+}
+input[variant="toggle"][appearane="danger"]:checked::after {
+	background-color: var(--colour-danger);
+}
+input[variant="toggle"][appearane="success"]:checked::after {
+	background-color: var(--colour-success);
+}
