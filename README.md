@@ -1,3 +1,8 @@
+# Requirements
+
+* CSS modules
+* React 17+
+
 # Usage
 
 This package encourages/supports (and enforces a bit) accessibility. It leverages the native [Constraints Validation API](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation), and very rudimentary structural styling via [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
@@ -21,17 +26,17 @@ css var | purpose
 `--colour-warning` | background colour of a "warning" button
 `--default-border-radius` | field corner rounding
 `--default-boxshadow` | drop shadow on buttons and fields
-`--default-padding` | innder spacing of fields and minimum inner spacing for buttons
+`--default-padding` | inner spacing of fields and minimum inner spacing for buttons
 `--default-transition` | css transitions applied to changes on buttons and fields
 `--grid-gutter` | space between css grid layout cells (labels + fields, fields + fields)
 
 Labels of fields set to required are automatically styled with an "*" in an accessibility-friendly way.
 
-Otherwise, implementer's css modules are consumed via css modules.
+Implementer's css modules are consumed via css modules (passed as normal via `className`).
 
 ## Component consumption
 
-If a field is supplied validation props (`minLength`, `required`, etc), the Form component will automatically trigger its fields ("form controls") to self-validate and display relevant errors upon submit. Each field supports supplying custom validation messages via the Constraints Validation API—when no custom message(s) are supplied, it uses the browser's defaults. A Form submitted with invalid fields will abort the submission (the supplied `onSubmit` callback will not be called).
+If a field is supplied validation props (`minLength`, `required`, etc), the component will automatically trigger its fields ("form controls") to self-validate and display relevant errors upon submit. Each field supports supplying custom validation messages via the Constraints Validation API—when no custom message(s) are supplied, browser defaults (which are pretty good and support i18n for free) are used. A Form submitted with invalid fields will abort the submission (the supplied `onSubmit` callback will not be called).
 
 Any props not specific to this package are passed to the relative element.
 
@@ -145,7 +150,7 @@ const SFC = (props) => (
 
 This component facilitates validation and provides a data model object for uncontrolled fields. Fields wrapped in a name `fieldset` result in a nested object.
 
-It also provides a `delta` of data changes, useful for `PATCH`ing existing field(s) changed by the user: the delta object contains only properties whose values are different from their initial. Ex an existing user changes their forename: `delta = { forename: 'Jakob' }`
+It also provides a `delta` of data changes, useful for `PATCH`ing existing field(s) changed by the user: the delta object contains only properties differing from their initial value. Ex an existing user changes their forename: `delta = { forename: 'Jakob' }`
 
 ### Form controls
 
@@ -167,9 +172,9 @@ A file picker for uploading from disk. The main difference between this componen
 
 #### Input
 
-This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`) that helps to ensure accessibility and facilitate validation.
+This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`) that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange` listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its internal handlers are first called and then handlers passed via props.
 
-It also offers a small easter-egg: a toggler, which is effectively a checkbox with fancy styling.
+It also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
 
 prop | purpose | default
 :--- | :--- | :---
