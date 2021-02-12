@@ -8,8 +8,8 @@ import {
 
 import composeData, {
 	FIELD_TAGS,
-} from './composeData';
-import deepDiff from './deepDiff';
+} from './composeData.js';
+import deepDiff from './deepDiff.js';
 
 import styles from './Form.module.css';
 

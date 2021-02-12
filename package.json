@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest"
+    "test": "NODE_ENV=test mocha './lib'",
+    "test:coverage": "NODE_ENV=test nyc --reporter=text mocha './lib'"
   },
   "type": "module",
   "repository": "github:jshado1/react-html5-form",
@@ -37,8 +38,13 @@
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/plugin-transform-react-jsx": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3"
+    "@babel/register": "^7.12.13",
+    "chai": "^4.3.0",
+    "mocha": "^8.3.0",
+    "nyc": "^15.1.0"
+  },
+  "engines": {
+    "node": ">=13.2.0"
   },
   "babel": {
     "presets": [
@@ -55,13 +61,17 @@
       "@babel/plugin-proposal-class-properties"
     ]
   },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.css$": "<rootDir>/style.mock.js"
-    },
-    "rootDir": "./lib",
-    "transform": {
-      "\\.jsx?$": "babel-jest"
-    }
+  "mocha": {
+    "extension": [
+      "spec.js"
+    ],
+    "file": [
+      "./mocha.setup.js"
+    ],
+    "inline-diffs": true,
+    "recursive": true,
+    "require": [
+      "@babel/register"
+    ]
   }
 }
