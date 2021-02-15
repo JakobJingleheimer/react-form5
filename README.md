@@ -45,7 +45,7 @@ import Form, {
 	Button,
 	FileInput,
 	Input,
-} from 'react-html5-form';
+} from 'react-form5';
 
 import AddressService from '../AddressService.js';
 import ClientsService from '../ClientsService.js';
@@ -70,7 +70,7 @@ const validateDomain = (event) => {
 	const { target } = target;
 	const isInvalid = ClientsService.validate(target.value);
 	let msg = 'Email address is not allowed';
-	
+
 	if (isInvalid) {
 		if (typeof msg === 'boolean') msg = isInvalid;
 

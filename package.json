@@ -1,5 +1,5 @@
 {
-  "name": "react-html5-form",
+  "name": "react-form5",
   "version": "1.0.0",
   "description": "A set of mostly unopinionated react components leveraging native APIs; supports controlled and uncontrolled state.",
   "main": "./lib/index.js",
@@ -11,7 +11,7 @@
     "test:coverage": "NODE_ENV=test nyc --reporter=text mocha './lib'"
   },
   "type": "module",
-  "repository": "github:jshado1/react-html5-form",
+  "repository": "github:jshado1/react-form5",
   "keywords": [
     "a11y",
     "constraints validation api",
@@ -22,9 +22,9 @@
   "author": "Jacob Smith",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JakobJingleheimer/react-html5-form/issues"
+    "url": "https://github.com/JakobJingleheimer/react-form5/issues"
   },
-  "homepage": "https://github.com/JakobJingleheimer/react-html5-form#readme",
+  "homepage": "https://github.com/JakobJingleheimer/react-form5#readme",
   "dependencies": {
     "lodash": "^4.17.20"
   },
